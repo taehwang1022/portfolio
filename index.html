@@ -28,6 +28,7 @@
       font-weight: bold;
       font-size: 1.1em;
       transition: color 0.3s;
+      cursor: pointer;
     }
 
     header a:hover {
@@ -51,11 +52,11 @@
 <body>
 
 <header>
-  <a href="#page2">자기소개</a>
-  <a href="#page3">경력기술서</a>
-  <a href="#page4">KIST 인턴 경험</a>
-  <a href="#page5">학교 프로젝트1</a>
-  <a href="#page6">학교 프로젝트2</a>
+  <a onclick="scrollToCenter('page2')">자기소개</a>
+  <a onclick="scrollToCenter('page3')">경력기술서</a>
+  <a onclick="scrollToCenter('page4')">KIST 인턴 경험</a>
+  <a onclick="scrollToCenter('page5')">학교 프로젝트1</a>
+  <a onclick="scrollToCenter('page6')">학교 프로젝트2</a>
 </header>
 
 <!-- 페이지 이미지 -->
@@ -74,7 +75,20 @@
 <div class="spacer" id="page6"></div>
 <img class="page" src="007.jpg" alt="교내 프로젝트">
 
+<!-- 중앙 정렬 스크롤 기능 -->
+<script>
+  function scrollToCenter(id) {
+    const target = document.getElementById(id);
+    const image = target.nextElementSibling;
+    if (!image) return;
+
+    const imageHeight = image.offsetHeight;
+    const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+    const scrollY = offsetTop - (window.innerHeight / 2) + (imageHeight / 2);
+
+    window.scrollTo({ top: scrollY, behavior: 'smooth' });
+  }
+</script>
+
 </body>
 </html>
-
-
